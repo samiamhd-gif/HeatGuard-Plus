@@ -1,0 +1,364 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+@theme inline {
+  --color-background: #f3f8fd;
+  --color-foreground: #0b1f33;
+  --font-sans: var(--font-outfit);
+  --color-hg-blue: #0396fd;
+  --color-hg-cyan: #00c6ff;
+  --color-hg-green: #96d416;
+  --color-safe: #10b981;
+  --color-caution: #f59e0b;
+  --color-danger: #ef4444;
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 20px rgba(16, 185, 129, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+@keyframes pulse-ring-danger {
+  0% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 22px rgba(239, 68, 68, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+}
+
+@keyframes pulse-ring-caution {
+  0% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 20px rgba(245, 158, 11, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0);
+  }
+}
+
+@keyframes status-glow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 20px rgba(3, 150, 253, 0.3),
+      0 0 35px rgba(150, 212, 22, 0.2);
+  }
+  50% {
+    box-shadow:
+      0 0 30px rgba(3, 150, 253, 0.5),
+      0 0 50px rgba(150, 212, 22, 0.4);
+  }
+}
+
+@keyframes float-gentle {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up-modal {
+  from {
+    transform: translateY(100%);
+    opacity: 0.8;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes sun-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes sun-glow {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.75;
+    filter: drop-shadow(0 0 12px rgba(251, 191, 36, 0.6));
+  }
+  50% {
+    transform: scale(1.12);
+    opacity: 1;
+    filter: drop-shadow(0 0 24px rgba(245, 158, 11, 0.9));
+  }
+}
+
+@keyframes wave-motion {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-120%) skewX(-18deg);
+  }
+  100% {
+    transform: translateX(220%) skewX(-18deg);
+  }
+}
+
+@keyframes float-blob {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(12px, -14px, 0) scale(1.06);
+  }
+  66% {
+    transform: translate3d(-10px, 10px, 0) scale(0.96);
+  }
+}
+
+@utility animate-pulse-ring-green {
+  animation: pulse-ring 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+@utility animate-pulse-ring-red {
+  animation: pulse-ring-danger 1.8s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+@utility animate-pulse-ring-amber {
+  animation: pulse-ring-caution 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+@utility animate-status-glow {
+  animation: status-glow 3s infinite ease-in-out;
+}
+
+@utility animate-slide-up {
+  animation: slide-up 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@utility animate-fade-in {
+  animation: fade-in 0.25s ease-out;
+}
+
+@utility animate-slide-up-modal {
+  animation: slide-up-modal 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@utility animate-slide-down {
+  animation: slide-down 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@utility animate-float {
+  animation: float-gentle 4s ease-in-out infinite;
+}
+
+@utility animate-liquid-wave {
+  animation: wave-motion 6s linear infinite;
+}
+
+@utility animate-liquid-wave-slow {
+  animation: wave-motion 9s linear infinite reverse;
+}
+
+@utility animate-sun-spin {
+  animation: sun-spin 22s linear infinite;
+}
+
+@utility animate-sun-glow {
+  animation: sun-glow 3.5s ease-in-out infinite;
+}
+
+@utility animate-shimmer {
+  animation: shimmer 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@utility animate-float-blob {
+  animation: float-blob 14s ease-in-out infinite;
+}
+
+@utility scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-color: #eef5fb;
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  overflow: hidden;
+  height: 100dvh;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(3, 150, 253, 0.22);
+  color: #083344;
+}
+
+/* App shell: soft blue-green ambient mesh */
+.app-shell {
+  background:
+    radial-gradient(
+      1100px 620px at 88% -8%,
+      rgba(3, 150, 253, 0.16),
+      transparent 62%
+    ),
+    radial-gradient(
+      900px 560px at -12% 28%,
+      rgba(150, 212, 22, 0.12),
+      transparent 60%
+    ),
+    radial-gradient(
+      760px 620px at 112% 96%,
+      rgba(0, 198, 255, 0.14),
+      transparent 60%
+    ),
+    radial-gradient(
+      520px 420px at 50% 118%,
+      rgba(3, 150, 253, 0.08),
+      transparent 65%
+    ), #f3f8fd;
+}
+
+/* Frosted glass surface used across cards & panels */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 2px solid #0f172a;
+  box-shadow: 4px 4px 0 0 #0f172a;
+}
+
+.glass-card {
+  background: #ffffff;
+  border: 2px solid #0f172a;
+  box-shadow: 4px 4px 0 0 #0f172a;
+}
+
+/* Bento card system: crisp black borders + flat hard shadow, minimal surface noise */
+@utility bento-card {
+  background-color: #ffffff;
+  border: 2px solid #0f172a;
+  box-shadow: 3px 3px 0 0 #0f172a;
+}
+
+@utility bento-card-static {
+  background-color: #ffffff;
+  border: 2px solid #0f172a;
+  box-shadow: none;
+}
+
+.gradient-hg {
+  background: linear-gradient(135deg, #0396fd 0%, #00c6ff 50%, #96d416 100%);
+}
+
+.gradient-hg-soft {
+  background: linear-gradient(
+    135deg,
+    rgba(3, 150, 253, 0.14) 0%,
+    rgba(0, 198, 255, 0.1) 50%,
+    rgba(150, 212, 22, 0.14) 100%
+  );
+}
+
+.gradient-text-hg {
+  background: linear-gradient(135deg, #0284c7 0%, #0396fd 50%, #65a30d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Leaflet popup polish */
+.leaflet-popup-content-wrapper {
+  border-radius: 16px;
+  font-family: var(--font-outfit), sans-serif;
+  box-shadow: 3px 3px 0 0 #0f172a;
+  border: 2px solid #0f172a;
+}
+
+.leaflet-popup-content {
+  font-family: var(--font-outfit), sans-serif;
+  font-size: 12px;
+  margin: 12px 14px;
+}
+
+.leaflet-container {
+  font-family: var(--font-outfit), sans-serif;
+}
+
+/* Thin branded scrollbar for the scrollable content area */
+.app-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.app-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.app-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #0396fd, #96d416);
+  border-radius: 999px;
+}
